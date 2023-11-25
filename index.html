@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* font-family: sans-serif; */
+        }
+
+        .main {
+            width: 100%;
+            height: 598.2px;
+            background-color: #282828;
+            /* color: white; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 600px;
+            height: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            box-shadow: 0px 0px 5px grey;
+            padding: 10px;
+            border-radius: 2px;
+        }
+
+        #to-do-box {
+            list-style: none;
+        }
+
+        li {
+            font-size: 18px;
+            font-weight: 500;
+            background-color: rgb(96, 4, 255);
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 12px;
+            color: white;
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <input type="text" id="item" placeholder="Write something here... ">
+            <ul id="to-do-box">
+                <li>
+                    Create a video
+                    <h3>X</h3>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let item = document.getElementById("item");
+        let todobox = document.getElementById("to-do-box");
+
+
+        item.addEventListener("keyup", function (event) {
+            // console.log(event);
+            if (event.key == 'Enter') {
+                // console.log(this.value);
+
+                addToDo(this.value);
+                this.value="";
+            }
+        })
+
+        const addToDo = (item) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML =
+                ` ${item}
+                 <h3>X</h3>
+                `;
+
+                listItem.querySelector("h3").addEventListener("click", function(){
+                    listItem.remove()
+                })
+           todobox.appendChild(listItem)
+        }
+    </script>
+
+
+
+    <!-- <script src="https://kit.fontawesome.com/bf520e6492.js" crossorigin="anonymous"></script> -->
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
